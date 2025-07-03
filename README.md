@@ -29,7 +29,6 @@ ds-assignment/
 
 ### 1. Build Docker Images
 
-
 Build server image
 cd ds-server
 docker build -t ds-server .
