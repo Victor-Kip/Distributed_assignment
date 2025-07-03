@@ -20,7 +20,14 @@ class ConsistentHashing:
 
     def add_server(self, server_id):
         for j in range(virtual_servers):
-            slot = self.virtual_server_hash(server_id, j)
+            original_slot = self.virtual_server_hash(server_id, j)
+            slot = original_slot
+            probe_count = 0
+
+            while slot in self.nodes:
+                probe_count += 1
+                slot = (original_slot + probe_count**2) % slots
+
             bisect.insort(self.ring, slot)
             self.nodes[slot] = f"Server{server_id} - Virtual{j}"
 
@@ -37,6 +44,8 @@ if __name__ == "__main__":
     for sid in range(1, physical_servers + 1):
         ch.add_server(sid)
 
-    for rid in [132574, 867530, 421337, 900001]:
+    for rid in [132574, 456789, 987654, 111222, 333444, 
+        555666, 777888, 999000, 123456, 654321]:
         server = ch.get_server(rid)
         print(f"Request {rid} mapped to: {server}")
+    
