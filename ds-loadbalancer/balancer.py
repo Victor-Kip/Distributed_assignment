@@ -9,7 +9,7 @@ app = Flask(__name__)
 client = docker.from_env()
 ch = ConsistentHashing()
 servers = {}  # server_id → container
-next_id = 1  # auto-incrementing server ID
+next_id = 1  # auto-incrementing server ID.
 
 
 @app.route("/rep", methods=["GET"])
