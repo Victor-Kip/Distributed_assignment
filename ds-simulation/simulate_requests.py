@@ -2,7 +2,7 @@ import requests
 import random
 import matplotlib.pyplot as plt
 
-# Number of simulated requests
+# Number of simulated requests 
 NUM_REQUESTS = 100
 
 # IDs to use (e.g., 0 to 99)
